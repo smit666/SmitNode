@@ -31,3 +31,6 @@ var swaggerUi = require('swagger-ui-express'),
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', router);
 https://blog.cloudboost.io/adding-swagger-to-existing-node-js-project-92a6624b855b
+https://codehandbook.org/implement-has-many-association-in-sequelize/
+https://stackoverflow.com/questions/24431213/get-only-values-from-rows-and-associations-with-sequelize
+https://lorenstewart.me/2016/09/12/sequelize-table-associations-joins/

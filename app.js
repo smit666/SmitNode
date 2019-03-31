@@ -10,6 +10,7 @@ var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json');
     var router = express.Router();
 var department=require('./routes/department')
+var trainer=require('./routes/trainer')
 
 var app = express();
 
@@ -25,5 +26,6 @@ app.use('/employee', empRouter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', router);
 app.use('/department',department);
+app.use('/trainer',trainer);
 
 module.exports = app;

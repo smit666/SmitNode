@@ -1,0 +1,248 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Demo Application API",
+      "description": "Node.js Blogg Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Employee",
+        "description": "API for employee in the system"
+      }, {
+        "name": "Department",
+        "description": "API for Department in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/employee/Insert": {
+        "post": {
+          "tags": [
+            "Employee"
+          ],
+          "description": "Create new employee in system",
+          "parameters": [
+            {
+              "name": "employee",
+              "in": "body",
+              "description": "employee that we want to create",
+              "schema": {
+                "$ref": "#/definitions/employee"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "New employee is created",
+              "schema": {
+                "$ref": "#/definitions/employee"
+              }
+            }
+          }
+        }
+        },
+        "/employee/get": {
+        "get": {
+          "tags": [
+            "Employee"
+          ],
+          "summary": "Get all Employees in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Employees"
+              }
+            }
+          }
+        }
+      },
+      "/department": {
+        "get": {
+          "tags": [
+            "Department"
+          ],
+          "summary": "Get all Department in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/department"
+              }
+            }
+          }
+        }
+      },
+      "/department/": {
+        "post": {
+          "tags": [
+            "Department"
+          ],
+          "description": "Create new department in system",
+          "parameters": [
+            {
+              "name": "department",
+              "in": "body",
+              "description": "department that we want to create",
+              "schema": {
+                "$ref": "#/definitions/department"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New department is created",
+              "schema": {
+                "$ref": "#/definitions/department"
+              }
+            }
+          }
+        
+        }
+      },
+      "/department/{departmentId}": {
+        "put": {
+          "tags": [
+            "Department"
+          ],
+          "description": "update  department in system",
+          
+          "parameters": [
+            {
+              "name": "departmentId",
+              "in": "path",
+              "description": "ID of pet to return",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated department object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/department"
+            }
+          }
+            ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New department is created",
+              "schema": {
+                "$ref": "#/definitions/department"
+              }
+            }
+          }
+        
+        }
+      },
+      "/department/{departmentId}/": {
+        "get": {
+          "tags": [
+            "Department"
+          ],
+          "description": "Get specific  department in system",
+          
+          "parameters": [
+            {
+              "name": "departmentId",
+              "in": "path",
+              "description": "ID of pet to return",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+            ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/departments"
+              }
+            }
+          }
+        
+        }
+      }
+
+    },
+    "definitions": {
+      "employee": {
+        "required": [
+          
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "uniqueItems": true
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "departmentId": {
+            "type": "integer"
+          },
+          "Department": {
+            "$ref": "#/definitions/department"
+          }
+        }
+      },
+      "employees": {
+        "type": "array",
+        "$ref": "#/definitions/employee"
+      },
+      "department":{
+        "properties":{
+          "id":{
+            "type":"integer",
+            "uniqueItems":true
+          },
+          "name":{
+            "type":"string"
+          },
+          "description":{
+            "type":"string"
+          },
+          "employees":{
+            
+        "$ref": "#/definitions/employees"
+          }
+        }
+      },
+      "departments": {
+        "type": "array",
+        "$ref": "#/definitions/department"
+      }
+    }
+  }
